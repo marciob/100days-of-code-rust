@@ -43,7 +43,7 @@ let point = (1, 2);
 <br>
 
 macro <br>
-macros are invokd with a "!" at the end <br>
+macros are invoked with a "!" at the end <br>
 there are pre-defined macros and custom macros <br>
 <br>
 examples of pre-defined macros: <br>
@@ -99,8 +99,49 @@ println!("Distance from origin: {}", distance);
 ```
 
 <br>
-todo: <br>
-explain impl blocks <br>
-explain :: <br>
-explain         (self.x.pow(2) + self.y.pow(2)).sqrt() as f32 <br>
+
+use <br>
+it's like "impot" <br>
+allows to import items, like modules, functions, structs, enums, or traits from another scope into the current scope. <br>
+ex.: <br>
+
+```rust
+// it's importing the Display trait from the fmt module in the std library scope
+// now Display can be used directly without having to prefix it with "std::fmt::" every time
+use std::fmt::Display;
+
+// example of using Display directly:
+
+struct Person {
+    name: String,
+    age: u32,
+}
+
+impl Display for Person {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "Person {{ name: {}, age: {} }}", self.name, self.age)
+    }
+}
+
+fn main() {
+    let person = Person { name: "John".to_string(), age: 30 };
+    println!("{}", person);
+}
+
+```
+
+std <br>
+stants for "standard library" <br>
+it's the default collection of modules and types included with the Rust language. <br>
+ex.: <br>
+
+```rust
+use std::fmt::Display;
+```
+
+<br>
+todo studies: <br>
+:: <br>
+(self.x.pow(2) + self.y.pow(2)).sqrt() as f32 <br>
+impl Display for Person {
 ```
