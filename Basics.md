@@ -148,6 +148,193 @@ use std::fmt::Display;
 `::` <br>
 it's used to refer to a function, method, or associated item that is defined in a trait. <br>
 it's like the use of `.` in Javascript, but in a broader way, it allows to access more things, like namespace, static methods, etc. <br>
+ex.: <br>
+
+```rust
+enum IpAddressKind {
+    V4,
+    V6,
+}
+
+fn main() {
+    // it's using the `::` to access the enum variants
+    let four: IpAddressKind = IpAddressKind::V4;
+    // it's using the `::` to access the enum variants
+    let six: IpAddressKind = IpAddressKind::V6;
+}
+```
+
+<br>
+
+Option Enum
+it's often to be used to receive a result of a computation that might succeed or fail, or to receive an absence of a value <br>
+it has two variants, the first one (called Some) is an existing value and the second one (called None) the abscense of a value <br>
+ex. of Option Enum definition: <br>
+
+```rust
+// it's a generic enum, it can be used with any type
+// it's part of the Rust standard library and is pre-defined
+enum Option<T>{
+ Some(T),
+ None
+}
+```
+
+ex. of Option Enum usage: <br>
+
+```rust
+let x: Option<i32> = Some(5); // create an Option<i32> value that contains the integer 5
+let y: Option<i32> = None;    // create an Option<i32> value that represents the absence of a value
+```
+
+<br>
+
+`unwrap` <br>
+it's a method provided by Option and Result enums <br>
+it gives a panic if the value is None <br>
+a panic is like a runtime error <br>
+ex.: <br>
+
+```rust
+let x = Some(5);
+let y = None;
+
+println!("The value of x is {}", x.unwrap());  // prints "The value of x is 5"
+println!("The value of y is {}", y.unwrap());  // panics at runtime
+```
+
+<br>
+
+`unwrap_or` <br>
+it gives a default value to be used if the value is None <br>
+ex.: <br>
+
+```rust
+let x = Some(5);
+let y = None;
+
+println!("The value of x is {}", x.unwrap_or(0));  // prints "The value of x is 5"
+println!("The value of y is {}", y.unwrap_or(0));  // prints "The value of y is 0"
+```
+
+<br>
+
+`match` <br>
+it compares if a value matches a pattern and executes code based on the match <br>
+it's a bit similar to a switch statement in javascript <br>
+ex.: <br>
+
+```rust
+// example 1
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+// it's using the `match` to compare the value of coin
+// it's a bit similar to a switch statement in javascript
+// if the value is Penny, it will return 1
+// if the value is Nickel, it will return 5
+// if the value is Dime, it will return 10
+// if the value is Quarter, it will return 25
+// if the value is none of the above, it will return 0
+// you need to make sure that all the possible cases are covered, otherwise it will throw an error
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+
+// example 2
+fn value_in_cents2(coin: Coin) -> u8 {
+    // it's using the `match` to compare the value of coin
+    // if the value is Penny, it will prints "Lucky penny!" and return 1
+    match coin {
+        Coin::Penny => {
+            println!("Lucky penny!");
+            1
+        },
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+        }
+    }
+
+// example 3
+// you can use the `_` to match any value
+// since it's using the `_`, it doesn't need to cover all the possible cases, because it will match any value
+fn value_in_cents3(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        _ => 0, // it will return 0 if the value is none of the above
+    }
+}
+
+// example 4
+// you can use the `|` to match multiple values
+// it's using all the possible values of the Coin enum
+fn value_in_cents4(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny | Coin::Nickel => 1, // it will return 1 if the value is Penny or Nickel
+        Coin::Dime | Coin::Quarter => 10, // it will return 10 if the value is Dime or Quarter
+    }
+}
+
+// example 5
+let x = Some(5);
+let y = None;
+
+// it's using the `match` to compare the value of x
+// if the value is Some, it will print the value
+// if the value is None, it will print "None"
+match x {
+    Some(i) => println!("The value of x is {}", i),
+    None => println!("The value of x is None"),
+}
+```
+
+<br>
+
+`if`
+it's a conditional statement <br>
+it's different from the `match` because it's not need to match all the possible cases <br>
+ex.: <br>
+
+```rust
+// example 1
+let x = Some(5);
+let y = None;
+
+// it's using the `if` to compare the value of x
+// it's read backwards
+// if the value is Some, it will print the value
+if let Some(i) = x {
+    println!("The value of x is {}", i);
+}
+
+// example 2
+// it's using the `if` to compare the value of y
+// it's read backwards
+// if the value of y is None, it will print "None"
+if let None = y {
+    println!("The value of y is None");
+}
+
+// example 3
+let some_value: Option<i32> = Some(3);
+
+// it's using the `if` to compare the value of some_value
+// it's read backwards
+// if the value of some_value is Some(3), it will print "three"
+if let Some(3) = some_value {
+    println!("three");
+}
+```
 
 <br>
 
