@@ -1,5 +1,7 @@
-struct <br>
+`struct`
+<br>
 ex.:
+<br>
 
 ```rust
 struct User{
@@ -100,7 +102,7 @@ println!("Distance from origin: {}", distance);
 
 <br>
 
-use <br>
+`use` <br>
 it's like "impot" <br>
 allows to import items, like modules, functions, structs, enums, or traits from another scope into the current scope. <br>
 ex.: <br>
@@ -130,7 +132,9 @@ fn main() {
 
 ```
 
-std <br>
+<br>
+
+`std` <br>
 stants for "standard library" <br>
 it's the default collection of modules and types included with the Rust language. <br>
 ex.: <br>
@@ -140,17 +144,50 @@ use std::fmt::Display;
 ```
 
 <br>
+
 `::` <br>
 it's used to refer to a function, method, or associated item that is defined in a trait. <br>
 it's like the use of `.` in Javascript, but in a broader way, it allows to access more things, like namespace, static methods, etc. <br>
 
 <br>
 
+`pow` <br>
+it's a method that returns the power of a number <br>
+ex.: <br>
+
+```rust
+// Using `pow` to calculate the square of a number
+let x = 2;
+let square = x.pow(2); // 4
+
+// Using `pow` to calculate the cube of a number
+let y = 3;
+let cube = y.pow(3); // 27
+
+// Using `pow` to calculate the power of a number
+let base = 2;
+let exponent = 3;
+let power = base.pow(exponent); // 8
+```
+
+<br>
+
+`as` <br>
+it converts a from one data type to another <br>
+ex.: <br>
+
+```rust
+// x is being create originally as a u32
+let x: u32 = 42;
+// y is being created as a u8, and it's converting the value of x from u32 to u8
+let y: u8 = x as u8;
+```
+
+<br>
+
+`Display` <br>
+it allows to convert a value into a string. <br>
+// explain more and better
+
 todo studies: <br>
-:: <br>
-(self.x.pow(2) + self.y.pow(2)).sqrt() as f32 <br>
 impl Display for Person {
-
-```
-
-```
