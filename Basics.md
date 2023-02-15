@@ -140,8 +140,17 @@ use std::fmt::Display;
 ```
 
 <br>
+`::` <br>
+it's used to refer to a function, method, or associated item that is defined in a trait. <br>
+it's like the use of `.` in Javascript, but in a broader way, it allows to access more things, like namespace, static methods, etc. <br>
+
+<br>
+
 todo studies: <br>
 :: <br>
 (self.x.pow(2) + self.y.pow(2)).sqrt() as f32 <br>
 impl Display for Person {
+
+```
+
 ```
