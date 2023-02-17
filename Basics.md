@@ -49,8 +49,12 @@ macros are invoked with a "!" at the end <br>
 there are pre-defined macros and custom macros <br>
 <br>
 examples of pre-defined macros: <br>
-println! <br>
-assert! <br>
+
+```rust
+println!
+assert!
+```
+
 <br>
 customed macros: <br>
 they are defined wuth the term `macro_rules!` <br>
@@ -98,6 +102,56 @@ println!("Point is: ({}, {})", point.x, point.y);
 
 let distance = point.distance_from_origin();
 println!("Distance from origin: {}", distance);
+```
+
+<br>
+
+Impl Trait <br>
+rust has several traits that can be implemented for a type using the impl keyword, including Debug, Clone, and PartialEq, among others. <br>
+ex.: <br>
+
+```rust
+// it's a struct
+struct Person {
+    name: String,
+    age: u32,
+}
+
+// it's an implementation of the Debug trait for the Person struct
+// it's a trait that allows to print the struct
+impl std::fmt::Debug for Person {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "Person {{ name: {}, age: {} }}", self.name, self.age)
+    }
+}
+
+fn main() {
+    let person = Person { name: "John".to_string(), age: 30 };
+    println!("{:?}", person);
+}
+```
+
+another example, with Display: <br>
+
+```rust
+// it's a struct
+struct Person {
+    name: String,
+    age: u32,
+}
+
+// it's an implementation of the Display trait for the Person struct
+// it's a trait that allows to print the struct
+impl std::fmt::Display for Person {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "Person {{ name: {}, age: {} }}", self.name, self.age)
+    }
+}
+
+fn main() {
+    let person = Person { name: "John".to_string(), age: 30 };
+    println!("{}", person);
+}
 ```
 
 <br>
@@ -300,7 +354,7 @@ match x {
 
 <br>
 
-`if`
+`if` <br>
 it's a conditional statement <br>
 it's different from the `match` because it's not need to match all the possible cases <br>
 ex.: <br>
@@ -372,9 +426,96 @@ let y: u8 = x as u8;
 
 <br>
 
+Traits <br>
+definition: <br>
+traits are similar to interfaces in other languages <br>
+traits are used to define shared behavior in an abstract way <br>
+traits can be used to define a set of methods, which can then be implemented on a particular type <br>
+ex.: <br>
+
+```rust
+// example 1
+// it's defining a trait called `Summary`
+// it's defining a method called `summarize` that returns a string
+pub trait Summary {
+    fn summarize(&self) -> String;
+}
+
+// example 2
+// it's defining a struct called `NewsArticle`
+// it's implementing the `Summary` trait
+// it's implementing the `summarize` method
+pub struct NewsArticle {
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
+}
+
+impl Summary for NewsArticle {
+    fn summarize(&self) -> String {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+```
+
+`&self` <br>
+it's a reference to the instance of the struct that we're calling the method on <br>
+it's similar to `this` in javascript <br>
+but it's different from `this` in javascript because `&self` is immutable <br>
+
+<br>
+
 `Display` <br>
 it allows to convert a value into a string. <br>
 // explain more and better
+
+<br>
+
+commands in the terminal: <br>
+
+`cargo new` <br>
+it creates a new project <br>
+it creates a new folder that contains: <br>
+
+- Cargo.toml <br>
+- src <br>
+- target <br>
+
+```rust
+// it's creating a new project called "hello_world"
+cargo new hello_world
+```
+
+<br>
+
+`cargo build` <br>
+it compiles the code <br>
+ex.: <br>
+
+```rust
+// it's compiling the code
+cargo build
+```
+
+<br>
+
+`main.rs` <br>
+it's the entry point of the program <br>
+if you want to run the program, you need to run the `main.rs` file <br>
+when you run the `main.rs` file, it will run the `main` function <br>
+when there is a main.rs file within src folder, a binary crate with the same name as the folder will be created <br>
+
+<br>
+
+crate <br>
+a crate is a binary or library that can be compiled and used in a Rust program <br>
+each crate contains a root module, which is defined in the `src/lib.rs` or `src/main.rs` file <br>
+
+lib.rs <br>
+it's used to define a library crate <br>
+if it's created at the src folder, it will create a library crate <br>
 
 todo studies: <br>
 impl Display for Person {
