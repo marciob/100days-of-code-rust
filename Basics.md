@@ -510,8 +510,19 @@ when there is a main.rs file within src folder, a binary crate with the same nam
 <br>
 
 crate <br>
-a crate is a binary or library that can be compiled and used in a Rust program <br>
+a crate is a code that can be compiled and used in a Rust program <br>
 each crate contains a root module, which is defined in the `src/lib.rs` or `src/main.rs` file <br>
+the root module is the module that is used when the crate is imported <br>
+
+two main types of crates: <br>
+
+- binary crate <br>
+  it's used to create a binary executable <br>
+  if it's created at the src folder, it will create a binary crate <br>
+
+- library crate <br>
+  it's used to create a library <br>
+  if it's created at the src folder, it will create a library crate <br>
 
 lib.rs <br>
 it's used to define a library crate <br>
